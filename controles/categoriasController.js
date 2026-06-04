@@ -13,7 +13,7 @@ const crearCategoria = async(req, res) => {
         })
     } catch (error) {
         res.status(500).json({
-           mensaje: "Error al crear categoria",
+           mensaje: "Error al crear categorias",
             error: error.message
         })
     }
