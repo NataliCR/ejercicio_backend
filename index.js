@@ -5,6 +5,7 @@ require('dotenv').config()
 //Conexion con la base de datos
 const db=require('./config/db')
 
+const proveedoresRutas = require('./rutas/proveedoresRutas')
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -18,6 +19,8 @@ app.get('/api/prueba', (req, res) => {
         mensaje: 'El servidor esta en funcionamiento'
     })
 })
+
+app.use('/api/proveedores', proveedoresRutas)
 
 const PORT = 3000
 app.listen(PORT, () => {
