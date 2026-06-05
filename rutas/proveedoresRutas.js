@@ -14,4 +14,7 @@ router.get('/:id', proveedoresControler.obtenerProveedorId)
 //Eliminar por ID
 router.delete('/:id', proveedoresControler.eliminarProveedor)
 
+//Actualizar proveedor
+router.put('/:id', proveedoresControler.actualizarProveedor)
+
 module.exports= router

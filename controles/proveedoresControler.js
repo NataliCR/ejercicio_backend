@@ -69,11 +69,38 @@ const eliminarProveedor = async (req, res) => {
     }
 }
 
+//Controlador actualizar proveedor por ID
+const actualizarProveedor = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, telefono, email } = req.body;
+        const proveedorActualizado =
+            await proveedorModelo.actualizarProveedor(
+                id,
+                nombre,
+                telefono,
+                email
+            );
+        res.status(200).json({
+            mensaje: "Proveedor actualizado exitosamente",
+            proveedor: proveedorActualizado
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            mensaje: "Error al actualizar proveedor",
+            error: error.message
+        });
+    }
+}
+
 
 //Exportar funciónes
 module.exports = {
     crearProveedor,
     obtenerProveedores,
     obtenerProveedorId,
-    eliminarProveedor
+    eliminarProveedor,
+    actualizarProveedor
 }

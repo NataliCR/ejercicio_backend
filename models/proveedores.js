@@ -49,12 +49,27 @@ const eliminarProveedor = async (id) => {
     return rows[0];
 }
 
+//Actualizar por ID
+const actualizarProveedor = async (id, nombre, telefono, email) => {
+    const query = `
+        UPDATE proveedores
+        SET nombre = $1,
+            telefono = $2,
+            email = $3
+        WHERE id_proveedor = $4
+        RETURNING *;
+    `;
 
+    const { rows } = await db.query(query, [nombre, telefono, email, id]);
+
+    return rows[0];
+}
 
 //Exportar funciónes
 module.exports = {
     crearProveedor,
     obtenerProveedores,
     obtenerProveedorId,
-    eliminarProveedor
+    eliminarProveedor,
+    actualizarProveedor
 }
