@@ -7,6 +7,8 @@ const db = require('./config/db')
 const categoriaRutas = require('./rutas/categoriaRutas')
 
 const proveedoresRutas = require('./rutas/proveedoresRutas')
+
+const productosRutas = require('./rutas/productosRutas')
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -24,6 +26,8 @@ app.get('/api/prueba', (req, res) => {
 app.use('/api/proveedores', proveedoresRutas)
 
 app.use('/api/categorias', categoriaRutas)
+
+app.use('/api/productos', productosRutas)
 
 const PORT = 3000
 app.listen(PORT, () => {
