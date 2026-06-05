@@ -84,4 +84,31 @@ const eliminarID = async (req, res) => {
     }
 }
 
-module.exports = { crearCategoria, obtenerID, obtenerCategorias, eliminarID }
+//Crear controlador para ACTUALIZAR CATEGORIA POR ID
+const actualizarID = async (req, res) => {
+
+    const { id_categoria } = req.params
+    const {nombre} = req.body
+    try {
+        const categoriaActualizada = await categoriaModelo.actualizarID(id_categoria, nombre)
+        if (!categoriaActualizada) {
+            return res.status(404).json({
+                mensaje: "Categoria no encontrada"
+            })
+        }
+
+        res.status(200).json({
+            mensaje: "Categoria actualizada exitosamente",
+            categoria: categoriaActualizada
+        })
+    } catch (error) {
+        console.error(error)
+
+        res.status(500).json({
+            mensaje: "Error al actualizar categoria",
+            error: error.message
+        })
+    }
+}
+
+module.exports = { crearCategoria, obtenerID, obtenerCategorias, eliminarID, actualizarID }

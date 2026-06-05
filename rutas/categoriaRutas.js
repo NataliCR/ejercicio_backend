@@ -15,4 +15,7 @@ router.get('/', categoriasController.obtenerCategorias)
 //Ruta para ELIMINAR CATEGORIA POR ID
 router.delete('/:id_categoria', categoriasController.eliminarID)
 
+//Ruta para ACTUALIZAR CATEGORIA POR ID
+router.put('/:id_categoria', categoriasController.actualizarID)
+
 module.exports = router

@@ -43,6 +43,16 @@ const eliminarID = async(id_categoria) => {
     return rows[0]
 }
 
+//ACTUALIZAR CATEGORIA POR ID
+const actualizarID = async(id_categoria, nombre) => {
+    const query = `
+        UPDATE public."categorias" SET nombre= $1 WHERE id_categoria = $2
+        RETURNING *
+    `;
+
+    const {rows} = await db.query(query, [nombre, id_categoria])
+    return rows[0]
+}
 
 //Exportar para cualquier parte del proyecto
-module.exports = {crearCategoria, obtenerID, obtenerCategorias, eliminarID}
+module.exports = {crearCategoria, obtenerID, obtenerCategorias, eliminarID, actualizarID}
