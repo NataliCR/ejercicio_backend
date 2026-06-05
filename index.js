@@ -4,6 +4,7 @@ require('dotenv').config()
 
 //Conexion con la base de datos
 const db=require('./config/db')
+const categoriaRutas = require('./rutas/categoriaRutas')
 
 const app = express()
 app.use(cors())
@@ -18,6 +19,8 @@ app.get('/api/prueba', (req, res) => {
         mensaje: 'El servidor esta en funcionamiento'
     })
 })
+
+app.use('/api/categorias', categoriaRutas)
 
 const PORT = 3000
 app.listen(PORT, () => {
