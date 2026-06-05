@@ -3,7 +3,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 //Conexion con la base de datos
-const db=require('./config/db')
+const db = require('./config/db')
 const categoriaRutas = require('./rutas/categoriaRutas')
 
 const app = express()
