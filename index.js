@@ -6,6 +6,7 @@ require('dotenv').config()
 const db=require('./config/db')
 const categoriaRutas = require('./rutas/categoriaRutas')
 
+const proveedoresRutas = require('./rutas/proveedoresRutas')
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -19,6 +20,8 @@ app.get('/api/prueba', (req, res) => {
         mensaje: 'El servidor esta en funcionamiento'
     })
 })
+
+app.use('/api/proveedores', proveedoresRutas)
 
 app.use('/api/categorias', categoriaRutas)
 
